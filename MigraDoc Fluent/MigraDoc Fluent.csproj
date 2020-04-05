@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netstandard2.1</TargetFramework>
+        <RootNamespace>MigraDoc</RootNamespace>
+        <Nullable>enable</Nullable>
+        <Title>MigraDoc Fluent</Title>
+        <Authors>Max Pixel</Authors>
+        <Description>Static functions that enable more concise code when using MigraDoc with a declarative style</Description>
+        <Copyright>2019 Max Pixel</Copyright>
+        <PackageLicenseUrl>https://github.com/M-Pixel/MigraDoc_Declarative/blob/master/LICENSE</PackageLicenseUrl>
+        <RepositoryUrl>https://github.com/M-Pixel/MigraDoc_Declarative</RepositoryUrl>
+        <RepositoryType>git</RepositoryType>
+        <PackageTags>migradoc;declarative</PackageTags>
+        <AssemblyVersion>1.0.0</AssemblyVersion>
+        <FileVersion>1.0.0</FileVersion>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="PDFsharp-MigraDoc-GDI" Version="1.50.5147" />
+    </ItemGroup>
+
+</Project>
