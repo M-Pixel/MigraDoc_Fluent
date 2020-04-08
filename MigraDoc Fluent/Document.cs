@@ -19,6 +19,13 @@ namespace MigraDoc
 			Subject = subject;
 		}
 
+		public FluentDocument DefaultPageSetup(Action<FluentPageSetup> builder) => DefaultPageSetup(out _, builder);
+		public FluentDocument DefaultPageSetup(out PageSetup setup, Action<FluentPageSetup> builder)
+		{
+			builder(new FluentPageSetup(setup = Subject.DefaultPageSetup));
+			return this;
+		}
+
 		public FluentDocument Style(string styleName, string baseName, Action<FluentStyle> builder)
 		{
 			var style = Subject.AddStyle(styleName, baseName);
