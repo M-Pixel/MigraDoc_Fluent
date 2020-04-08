@@ -10,5 +10,11 @@ namespace MigraDoc
 		{
 			Subject = subject;
 		}
+
+		public FluentFormattedText Style(string styleName)
+		{
+			Subject.Style = styleName;
+			return this;
+		}
 	}
 }

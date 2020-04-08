@@ -12,9 +12,18 @@ namespace MigraDoc
 			Subject = subject;
 		}
 
-		public FluentCell Paragraph(string paragraphText, Action<FluentParagraph>? builder = null)
+		public FluentCell Image(string fileName, Action<FluentImage>? builder = null)
+		{
+			var image = Subject.AddImage(fileName);
+			builder?.Invoke(new FluentImage(image));
+			return this;
+		}
+
+		public FluentCell Paragraph(string? styleName, string? paragraphText = null,
+			Action<FluentParagraph>? builder = null)
 		{
 			var paragraph = Subject.AddParagraph(paragraphText);
+			paragraph.Style = styleName;
 			builder?.Invoke(new FluentParagraph(paragraph));
 			return this;
 		}

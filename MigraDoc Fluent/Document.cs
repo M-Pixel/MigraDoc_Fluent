@@ -5,14 +5,9 @@ namespace MigraDoc
 {
 	public static partial class Fluent
 	{
-		public static FluentDocument DeclareDocument() => new Document().AsFluent();
+		public static FluentDocument DeclareDocument() => DeclareDocument(out _);
+		public static FluentDocument DeclareDocument(out Document document) => (document = new Document()).AsFluent();
 		public static FluentDocument AsFluent(this Document document) => new FluentDocument(document);
-
-		public static Document AppendSection(this Document document, Action<Section> builder)
-		{
-			builder(document.AddSection());
-			return document;
-		}
 	}
 
 	public struct FluentDocument
@@ -24,9 +19,16 @@ namespace MigraDoc
 			Subject = subject;
 		}
 
-		public FluentDocument Section(Action<FluentSection> f)
+		public FluentDocument Style(string styleName, string baseName, Action<FluentStyle> builder)
 		{
-			f(new FluentSection(Subject.AddSection()));
+			var style = Subject.AddStyle(styleName, baseName);
+			builder(new FluentStyle(style));
+			return this;
+		}
+
+		public FluentDocument Section(Action<FluentSection> builder)
+		{
+			builder(new FluentSection(Subject.AddSection()));
 			return this;
 		}
 	}

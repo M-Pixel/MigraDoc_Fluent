@@ -4,11 +4,11 @@ namespace MigraDoc
 {
 	public struct FluentColumn
 	{
+		public Column Subject { get; }
+
 		public FluentColumn(Column subject)
 		{
 			Subject = subject;
 		}
-
-		public Column Subject { get; }
 	}
 }

@@ -29,7 +29,13 @@ namespace MigraDoc
 			return this;
 		}
 
-		public FluentRow Cell(string text, TextFormat textFormat)
+		public FluentRow Cell(string? styleName, string text)
+		{
+			NextCell.AddParagraph(text).Style = styleName;
+			return this;
+		}
+
+		public FluentRow Cell(TextFormat textFormat, string text)
 		{
 			var paragraph = NextCell.AddParagraph();
 			paragraph.AddFormattedText(text, textFormat);
