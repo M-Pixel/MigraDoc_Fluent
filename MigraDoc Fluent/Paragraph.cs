@@ -25,10 +25,9 @@ namespace MigraDoc
 			return this;
 		}
 
-		public FluentParagraph Text(string text, Action<Text>? builder = null)
+		public FluentParagraph Text(string text)
 		{
-			var plainText = Subject.AddText(text);
-			builder?.Invoke(plainText);
+			Subject.AddText(text);
 			return this;
 		}
 

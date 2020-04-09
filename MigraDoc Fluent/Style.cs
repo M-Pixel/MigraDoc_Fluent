@@ -34,15 +34,61 @@ namespace MigraDoc
 			return this;
 		}
 
+		public FluentStyle Set(Underline underlineType)
+		{
+			Subject.Font.Underline = underlineType;
+			return this;
+		}
+
 		public FluentStyle Base(string styleName)
 		{
 			Subject.BaseStyle = styleName;
 			return this;
 		}
 
-		public FluentStyle Font(Font font)
+		public FluentStyle Bold(bool bold = true)
 		{
-			Subject.Font = font;
+			Subject.Font.Bold = bold;
+			return this;
+		}
+
+		public FluentStyle Color(byte red, byte green, byte blue, byte? opacity) =>
+			Color(new Color(opacity ?? byte.MaxValue, red, green, blue));
+		public FluentStyle Color(double cyan, double yellow, double magenta, double? opacity) =>
+			Color(new Color(opacity ?? 1.0d, cyan, yellow, magenta));
+		public FluentStyle Color(Color color)
+		{
+			Subject.Font.Color = color;
+			return this;
+		}
+
+		public FluentStyle Italic(bool italic = true)
+		{
+			Subject.Font.Italic = italic;
+			return this;
+		}
+
+		public FluentStyle Size(Unit fontSize)
+		{
+			Subject.Font.Size = fontSize;
+			return this;
+		}
+
+		public FluentStyle Superscript(bool isSuperscript)
+		{
+			Subject.Font.Subscript = isSuperscript;
+			return this;
+		}
+
+		public FluentStyle Subscript(bool isSubscript)
+		{
+			Subject.Font.Subscript = isSubscript;
+			return this;
+		}
+
+		public FluentStyle Font(string fontName)
+		{
+			Subject.Font.Name = fontName;
 			return this;
 		}
 
@@ -64,6 +110,9 @@ namespace MigraDoc
 			return this;
 		}
 
+		/// <summary>
+		/// Whether or not to keep all of the paragraph's lines on the same page.
+		/// </summary>
 		public FluentStyle KeepTogether(bool keepTogether = true)
 		{
 			Subject.ParagraphFormat.KeepTogether = keepTogether;

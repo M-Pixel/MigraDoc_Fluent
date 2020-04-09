@@ -21,7 +21,7 @@ namespace MigraDoc
 			return this;
 		}
 
-		public FluentShading Visible(bool visible)
+		public FluentShading Visible(bool visible = true)
 		{
 			Subject.Visible = visible;
 			return this;

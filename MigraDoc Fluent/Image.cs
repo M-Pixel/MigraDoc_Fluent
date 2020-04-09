@@ -40,23 +40,55 @@ namespace MigraDoc
 			return this;
 		}
 
-		/// <param name="position">
-		/// Can be an <see cref="int"/>, <see cref="double"/>,<see cref="Unit"/>, or
-		/// <see cref="ShapePosition"/>.
-		/// </param>
-		public FluentImage PositionLeft(LeftPosition position)
+		public FluentImage PositionLeft(ShapePosition position)
 		{
 			Subject.Left = position;
 			return this;
 		}
 
-		/// <param name="position">
-		/// Can be an <see cref="int"/>, <see cref="double"/>,<see cref="Unit"/>, or
-		/// <see cref="ShapePosition"/>.
-		/// </param>
-		public FluentImage PositionTop(TopPosition position)
+		public FluentImage PositionLeft(Unit position)
+		{
+			Subject.Left = position;
+			return this;
+		}
+
+		public FluentImage PositionTop(ShapePosition position)
 		{
 			Subject.Top = position;
+			return this;
+		}
+
+		public FluentImage PositionTop(Unit position)
+		{
+			Subject.Top = position;
+			return this;
+		}
+
+		public FluentImage Position(ShapePosition left, ShapePosition top)
+		{
+			Subject.Left = left;
+			Subject.Top = top;
+			return this;
+		}
+
+		public FluentImage Position(ShapePosition left, Unit top)
+		{
+			Subject.Left = left;
+			Subject.Top = top;
+			return this;
+		}
+
+		public FluentImage Position(Unit left, ShapePosition top)
+		{
+			Subject.Left = left;
+			Subject.Top = top;
+			return this;
+		}
+
+		public FluentImage Position(Unit left, Unit top)
+		{
+			Subject.Left = left;
+			Subject.Top = top;
 			return this;
 		}
 
@@ -75,6 +107,13 @@ namespace MigraDoc
 		public FluentImage ScaleWidth(double widthScale)
 		{
 			Subject.ScaleWidth = widthScale;
+			return this;
+		}
+
+		public FluentImage Scale(double widthScale, double heightScale)
+		{
+			Subject.ScaleWidth = widthScale;
+			Subject.ScaleHeight = heightScale;
 			return this;
 		}
 

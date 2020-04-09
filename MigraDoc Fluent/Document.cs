@@ -8,6 +8,17 @@ namespace MigraDoc
 		public static FluentDocument DeclareDocument() => DeclareDocument(out _);
 		public static FluentDocument DeclareDocument(out Document document) => (document = new Document()).AsFluent();
 		public static FluentDocument AsFluent(this Document document) => new FluentDocument(document);
+
+		public static Unit cm(this double value) => new Unit(value, UnitType.Centimeter);
+		public static Unit cm(this int value) => new Unit(value, UnitType.Centimeter);
+		public static Unit inch(this double value) => new Unit(value, UnitType.Inch);
+		public static Unit inch(this int value) => new Unit(value, UnitType.Inch);
+		public static Unit mm(this double value) => new Unit(value, UnitType.Millimeter);
+		public static Unit mm(this int value) => new Unit(value, UnitType.Millimeter);
+		public static Unit pt(this double value) => new Unit(value, UnitType.Point);
+		public static Unit pt(this int value) => new Unit(value, UnitType.Centimeter);
+		public static Unit pc(this double value) => new Unit(value, UnitType.Centimeter);
+		public static Unit pc(this int value) => new Unit(value, UnitType.Centimeter);
 	}
 
 	public struct FluentDocument

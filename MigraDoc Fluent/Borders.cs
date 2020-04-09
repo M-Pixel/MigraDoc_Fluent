@@ -13,6 +13,13 @@ namespace MigraDoc
 		}
 
 
+		public FluentBorders Set(BorderStyle style)
+		{
+			Subject.Style = style;
+			return this;
+		}
+
+
 		public FluentBorders Color(byte red, byte green, byte blue, byte? opacity) =>
 			Color(new Color(opacity ?? byte.MaxValue, red, green, blue));
 		public FluentBorders Color(double cyan, double yellow, double magenta, double? opacity) =>
@@ -24,39 +31,9 @@ namespace MigraDoc
 		}
 
 
-		public FluentBorders Set(BorderStyle style)
-		{
-			Subject.Style = style;
-			return this;
-		}
-
 		public FluentBorders Distance(Unit unit)
 		{
 			Subject.Distance = unit;
-			return this;
-		}
-
-		public FluentBorders DistanceBottom(Unit unit)
-		{
-			Subject.DistanceFromBottom = unit;
-			return this;
-		}
-
-		public FluentBorders DistanceLeft(Unit unit)
-		{
-			Subject.DistanceFromLeft = unit;
-			return this;
-		}
-
-		public FluentBorders DistanceRight(Unit unit)
-		{
-			Subject.DistanceFromRight = unit;
-			return this;
-		}
-
-		public FluentBorders DistanceTop(Unit unit)
-		{
-			Subject.DistanceFromTop = unit;
 			return this;
 		}
 
@@ -69,7 +46,7 @@ namespace MigraDoc
 			return this;
 		}
 
-		public FluentBorders Visible(bool visible)
+		public FluentBorders Visible(bool visible = true)
 		{
 			Subject.Visible = visible;
 			return this;
@@ -82,39 +59,39 @@ namespace MigraDoc
 		}
 
 
-		public FluentBorders Bottom(Action<FluentBorder> builder)
+		public FluentBorders Bottom(Action<IFluentEdgeBorder> builder)
 		{
-			builder(new FluentBorder(Subject.Bottom));
+			builder(new FluentBorder(Subject.Bottom, Subject, BorderType.Bottom));
 			return this;
 		}
 
-		public FluentBorders Left(Action<FluentBorder> builder)
+		public FluentBorders Left(Action<IFluentEdgeBorder> builder)
 		{
-			builder(new FluentBorder(Subject.Left));
+			builder(new FluentBorder(Subject.Left, Subject, BorderType.Left));
 			return this;
 		}
 
-		public FluentBorders Right(Action<FluentBorder> builder)
+		public FluentBorders Right(Action<IFluentEdgeBorder> builder)
 		{
-			builder(new FluentBorder(Subject.Right));
+			builder(new FluentBorder(Subject.Right, Subject, BorderType.Right));
 			return this;
 		}
 
-		public FluentBorders Top(Action<FluentBorder> builder)
+		public FluentBorders Top(Action<IFluentEdgeBorder> builder)
 		{
-			builder(new FluentBorder(Subject.Top));
+			builder(new FluentBorder(Subject.Top, Subject, BorderType.Top));
 			return this;
 		}
 
 		public FluentBorders DiagonalDown(Action<FluentBorder> builder)
 		{
-			builder(new FluentBorder(Subject.DiagonalDown));
+			builder(new FluentBorder(Subject.DiagonalDown, null, BorderType.DiagonalDown));
 			return this;
 		}
 
 		public FluentBorders DiagonalUp(Action<FluentBorder> builder)
 		{
-			builder(new FluentBorder(Subject.DiagonalUp));
+			builder(new FluentBorder(Subject.DiagonalUp, null, BorderType.DiagonalUp));
 			return this;
 		}
 	}
